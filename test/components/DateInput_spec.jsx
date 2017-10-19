@@ -16,12 +16,6 @@ describe('DateInput', () => {
         expect(wrapper.find('input').props()['aria-label']).to.equal(placeholder);
       });
 
-      it('has value === props.inputValue if prop is passed in', () => {
-        const INPUT_VALUE = 'foobar';
-        const wrapper = shallow(<DateInput id="date" inputValue={INPUT_VALUE} />).dive();
-        expect(wrapper.find('input').props().value).to.equal(INPUT_VALUE);
-      });
-
       it('has value === props.displayValue if inputValue is not passed in', () => {
         const DISPLAY_VALUE = 'foobar';
         const wrapper = shallow(<DateInput id="date" displayValue={DISPLAY_VALUE} />).dive();
@@ -213,20 +207,18 @@ describe('DateInput', () => {
       const el = {
         blur() {},
         focus() {},
-        select() {},
       };
 
       beforeEach(() => {
         sinon.spy(el, 'blur');
         sinon.spy(el, 'focus');
-        sinon.spy(el, 'select');
       });
 
       afterEach(() => {
         sinon.restore();
       });
 
-      it('focuses and selects inputRef when becoming focused', () => {
+      it('focuses inputRef when becoming focused', () => {
         const wrapper = shallow(
           <DateInput id="date" focused={false} isFocused={false} />,
           { disableLifecycleMethods: false },
@@ -238,7 +230,6 @@ describe('DateInput', () => {
 
         expect(el.blur).to.have.property('callCount', 0);
         expect(el.focus).to.have.property('callCount', 1);
-        expect(el.select).to.have.property('callCount', 1);
       });
 
       it('blurs when becoming unfocused', () => {
@@ -253,7 +244,6 @@ describe('DateInput', () => {
 
         expect(el.blur).to.have.property('callCount', 1);
         expect(el.focus).to.have.property('callCount', 0);
-        expect(el.select).to.have.property('callCount', 0);
       });
     });
 

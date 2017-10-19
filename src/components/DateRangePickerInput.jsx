@@ -43,7 +43,6 @@ const propTypes = forbidExtraProps({
   onQuestionMark: PropTypes.func,
 
   startDate: PropTypes.string,
-  startDateValue: PropTypes.string,
   endDate: PropTypes.string,
   endDateValue: PropTypes.string,
 
@@ -87,9 +86,7 @@ const defaultProps = {
   onQuestionMark() {},
 
   startDate: '',
-  startDateValue: '',
   endDate: '',
-  endDateValue: '',
 
   isStartDateFocused: false,
   isEndDateFocused: false,
@@ -116,7 +113,6 @@ const defaultProps = {
 
 function DateRangePickerInput({
   startDate,
-  startDateValue,
   startDateId,
   startDatePlaceholderText,
   screenReaderMessage,
@@ -125,7 +121,6 @@ function DateRangePickerInput({
   onStartDateFocus,
   onStartDateShiftTab,
   endDate,
-  endDateValue,
   endDateId,
   endDatePlaceholderText,
   isEndDateFocused,
@@ -188,7 +183,6 @@ function DateRangePickerInput({
         id={startDateId}
         placeholder={startDatePlaceholderText}
         displayValue={startDate}
-        inputValue={startDateValue}
         screenReaderMessage={screenReaderText}
         focused={isStartDateFocused}
         isFocused={isFocused}
@@ -216,7 +210,6 @@ function DateRangePickerInput({
         id={endDateId}
         placeholder={endDatePlaceholderText}
         displayValue={endDate}
-        inputValue={endDateValue}
         screenReaderMessage={screenReaderText}
         focused={isEndDateFocused}
         isFocused={isFocused}

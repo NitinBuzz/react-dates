@@ -14,8 +14,6 @@ import toMomentObject from '../utils/toMomentObject';
 import toLocalizedDateString from '../utils/toLocalizedDateString';
 import getResponsiveContainerStyles from '../utils/getResponsiveContainerStyles';
 
-import toISODateString from '../utils/toISODateString';
-
 import SingleDatePickerInput from './SingleDatePickerInput';
 import DayPickerSingleDateController from './DayPickerSingleDateController';
 
@@ -430,7 +428,6 @@ class SingleDatePicker extends React.Component {
     const { isInputFocused } = this.state;
 
     const displayValue = this.getDateString(date);
-    const inputValue = toISODateString(date);
 
     const onOutsideClick = (!withPortal && !withFullScreenPortal) ? this.onClearFocus : undefined;
 
@@ -454,7 +451,6 @@ class SingleDatePicker extends React.Component {
             customCloseIcon={customCloseIcon}
             customInputIcon={customInputIcon}
             displayValue={displayValue}
-            inputValue={inputValue}
             onChange={this.onChange}
             onFocus={this.onFocus}
             onKeyDownShiftTab={this.onClearFocus}

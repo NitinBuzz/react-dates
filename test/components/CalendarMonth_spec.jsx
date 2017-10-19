@@ -3,6 +3,8 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import moment from 'moment';
 
+import toISOMonthString from '../../src/utils/toISOMonthString';
+
 import CalendarMonth from '../../src/components/CalendarMonth';
 
 describe('CalendarMonth', () => {
@@ -21,14 +23,16 @@ describe('CalendarMonth', () => {
 
     describe('caption', () => {
       it('.CalendarMonth__caption id is present', () => {
+        const captionId = `#CalendarMonth_caption__${toISOMonthString(moment())}`;
         const wrapper = shallow(<CalendarMonth />).dive();
-        expect(wrapper.find('#CalendarMonth__caption')).to.have.lengthOf(1);
+        expect(wrapper.find(captionId)).to.have.lengthOf(1);
       });
 
       it('text is the correctly formatted month title', () => {
         const MONTH = moment();
-        const caption = shallow(<CalendarMonth month={MONTH} />).dive().find('#CalendarMonth__caption');
-        expect(caption.text()).to.equal(MONTH.format('MMMM YYYY'));
+        const captionId = `#CalendarMonth_caption__${toISOMonthString(MONTH)}`;
+        const captionWrapper = shallow(<CalendarMonth month={MONTH} />).dive().find(captionId);
+        expect(captionWrapper.text()).to.equal(MONTH.format('MMMM YYYY'));
       });
     });
   });
